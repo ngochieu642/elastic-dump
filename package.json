@@ -1,0 +1,21 @@
+{
+  "name": "elastic-dump",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dump:raw": "NODE_TLS_REJECT_UNAUTHORIZED=0 elasticdump --input=https://elastic:changeme@192.168.1.239:9200/device_log_raw --output=./device_log_raw.json --type=data",
+    "dump:report": "NODE_TLS_REJECT_UNAUTHORIZED=0 elasticdump --input=https://elastic:changeme@192.168.2.239:9200/device_log --output=./device_log.json --type=data",
+    "dump:activity": "NODE_TLS_REJECT_UNAUTHORIZED=0 elasticdump --input=https://elastic:changeme@192.168.1.239:9200/device_activities --output=./device_activities.json --type=data",
+    "restore:raw": "NODE_TLS_REJECT_UNAUTHORIZED=0 elasticdump --input=./device_log_raw.json --output=http://localhost:9200/device_log_raw --type=data",
+    "restore:report": "NODE_TLS_REJECT_UNAUTHORIZED=0 elasticdump --input=./device_log.json --output=http://localhost:9200/device_log --type=data",
+    "restore:activity": "NODE_TLS_REJECT_UNAUTHORIZED=0 elasticdump --input=./device_activities.json --output=http://localhost:9200/device_activities --type=data"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "elasticdump": "^6.65.3"
+  }
+}
