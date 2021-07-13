@@ -5,8 +5,8 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: hieu-elastic-dump
-		volumes:
-			- ${PWD}:/utils
+    volumes:
+      - ${PWD}:/utils
     networks:
       - dev-network
     logging:
