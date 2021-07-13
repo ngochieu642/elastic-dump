@@ -1,0 +1,22 @@
+version: "3.4"
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hieu-elastic-dump
+		volumes:
+			- ${PWD}:/utils
+    networks:
+      - dev-network
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+networks:
+  dev-network:
+    driver: bridge
+    external:
+      name: sip-network
